@@ -1,0 +1,16 @@
+{
+    "name": "Gmeet_Controller",
+    "description": "An extension to control Google Meet Actions using hand/facial gestures.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "content_scripts": [{
+        "matches": [
+            "https://meet.google.com/*"
+        ],
+        "js": [
+            "src/tf.min.js",
+            "src/teachablemachine-pose.min.js",
+            "src/background.js"
+        ]
+    }]
+}
