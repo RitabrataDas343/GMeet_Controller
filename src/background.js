@@ -25,20 +25,34 @@ async function loop(timestamp) {
     window.requestAnimationFrame(loop);
 }
 
-function muteAudio(probability) {
+
+function Audio(probability) {
     if (probability >= 1) {
-        const audioButton = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe")[0];
+        const audioButton = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.tWDL4c.uaILN")[0];
         if (audioButton.classList.contains("HNeRed")) {
             audioButton.click();
         }
     }
 }
 
-function turnVideoOff(probability) {
+function Video(probability) {
     if (probability >= 1) {
-        const videoButton = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe")[1];
+        const videoButton = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.tWDL4c.uaILN")[1];
         if (videoButton.classList.contains("HNeRed")) {
             videoButton.click();
+        }
+    }
+}
+
+function Escape(probability) {
+    if (probability >= 1) {
+        const Button0 = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.tWDL4c.uaILN")[0];
+        const Button1 = document.querySelectorAll(".VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.tWDL4c.uaILN")[1];
+        if (Button0.classList.contains("HNeRed")) {
+            Button0.click();
+        }
+        if (Button1.classList.contains("HNeRed")) {
+            Button1.click();
         }
     }
 }
@@ -65,18 +79,18 @@ async function predict() {
     })
     event = predictionsArray[index].event;
 
-    console.log(event, max);
-    if (event === "Mute") {
-        muteAudio(max);
+    if (event === "Audio") {
+        Audio(max);
     } else if (event === "Video") {
-        turnVideoOff(max);
+        Video(max);
+    } else if (event === "Escape"){
+        Escape(max);
     }
 }
 
 
 const webcamContainer = document.createElement("div");
 webcamContainer.id = "webcam-container";
-// webcamContainer.style.display = "none"; // Don't display the webcam on the site
 document.body.appendChild(webcamContainer);
 
 init();
